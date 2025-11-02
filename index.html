@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+    <header>
+        <img src="./assets/logo.png" alt="My-Cart">
+        <div class="cart" id="cart">
+            <p>Open Cart</p>
+            <div id="cart-icon" onclick="openCart()">🛒</div>
+        </div>
+    </header>
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="sidebar-header">
+            <button onclick="closeCart()"><i class="fa-solid fa-arrow-left"></i>Close Cart</button>
+            <h2>Your Cart</h2>
+        </div>
+        <div class="sidebar-main">
+            <!-- <div class="sidebar-item">
+        
+            </div> -->
+        </div>
+        <div class="sidebar-footer">
+            <div id="subtotal">
+                <h3>Sub Total :</h3>
+                <p></p>
+            </div>
+            <div id="tax">
+                <h3>Tax :</h3>
+                <p></p>
+            </div>
+            <div id="total">
+                <h3>Total :</h3>
+                <p></p>
+            </div>
+            <div class="order-btn">
+                <button>Order</button>
+            </div>
+        </div>
+    </div>
+    <main>
+        <h1>Our Menu<hr></h1>
+        <div class="btns">
+            <button onclick="menu()">All</button>
+            <button onclick="menu('Breakfast')">Breakfast</button>
+            <button onclick="menu('Lunch')">Lunch</button>
+            <button onclick="menu('Dinner')">Dinner</button>
+            <button onclick="menu('Shakes')">Shakes</button>
+        </div>
+        <div id="foodItems">
+         
+        </div>
+    </main>
+          <div id="overlay"></div>
+<body>
+    <script src="app.js"></script>
+</body>
+</html>
