@@ -15,35 +15,38 @@ function closeCart() {
 let subArr = []
 
 function addToCart(btn) {
-  let item = btn.closest('.items');
-  let img = item.firstElementChild.src
-  let title = item.children[1].innerText
-  let description = item.children[2].innerText
-  let price = item.children[3].firstElementChild.innerText
-  
+  let item = btn.closest('.foodItem')
+
+  let img = item.querySelector('.img img').src
+  let title = item.querySelector('.titlePrice h3').innerText
+  let description = item.querySelector('.description').innerText
+  let priceText = item.querySelector('.titlePrice p').innerText
+
   let sidebarItem = document.createElement('div')
-  sidebarItem.setAttribute('class', 'sidebar-item')
-  sidebarItem.innerHTML = `<img src="${img}" alt=""><div class="sidebar-item-txt"><h3>${title}</h3><p>${description}</p></div><div class="sidebar-price-dlt"><p>${price}</p><button onclick="removeFromCart(this)">Remove From Cart</button></div>`
-  document.getElementsByClassName('sidebar-main')[0].appendChild(sidebarItem)
- let priceNum = Number(price.replace('$', ''))
+  sidebarItem.classList.add('sidebar-item')
+  sidebarItem.innerHTML = `
+    <img src="${img}" alt="">
+    <div class="sidebar-item-txt">
+      <h3>${title}</h3>
+      <p>${description}</p>
+    </div>
+    <div class="sidebar-price-dlt">
+      <p>${priceText}</p>
+      <button onclick="removeFromCart(this)">Remove</button>
+    </div>
+  `
+  document.querySelector('.sidebar-main').appendChild(sidebarItem)
+
+  let priceNum = Number(priceText.replace('Rs', '').trim())
   subArr.push(priceNum)
-  let subTotal = subArr.reduce(function(total,curr){
-    return total + curr
-    
-  },0)
-  subTotal = subTotal.toFixed(2)
-  
-  subTotal = Number(subTotal)
-  let tax = Number( subTotal / 7)
-  let total = Number( subTotal + tax)
-  
-  tax = Math.floor(tax)
-  total = total.toFixed(2)
-  document.getElementById('subtotal').lastElementChild.innerText = `$${subTotal}`
-  document.getElementById('tax').lastElementChild.innerText = `$${tax}`
-  document.getElementById('total').lastElementChild.innerText = `$${total}`
-  console.log(tax)
-  
+
+  let subTotal = subArr.reduce((total, curr) => total + curr, 0);
+  let tax = Math.floor(subTotal / 7);
+  let total = subTotal + tax
+
+  document.querySelector('#subtotal p:last-child').innerText = `${subTotal}Rs`
+  document.querySelector('#tax p:last-child').innerText = `${tax}Rs`
+  document.querySelector('#total p:last-child').innerText = `${total}Rs`
 }
 
 
@@ -51,10 +54,10 @@ function removeFromCart(btn){
   let item = btn.closest('.sidebar-item')
   item.style.display = 'none'
   let price = item.children[2].firstElementChild.innerText
-  let priceNum = Number(price.replace('$', ''))
+  let priceNum = Number(price.replace('Rs', ''))
 
   let subText = document.getElementById('subtotal').lastElementChild.innerText
-  let currentSub = Number(subText.replace('$', ''))
+  let currentSub = Number(subText.replace('Rs', ''))
 
   let newSub = currentSub - priceNum
   newSub = newSub.toFixed(2)
@@ -65,11 +68,24 @@ function removeFromCart(btn){
   
   tax = Math.floor(tax)
   total = total.toFixed(2)
-  document.getElementById('subtotal').lastElementChild.innerText = `$${subTotal}`
-  document.getElementById('tax').lastElementChild.innerText = `$${tax}`
-  document.getElementById('total').lastElementChild.innerText = `$${total}`
+  document.getElementById('subtotal').lastElementChild.innerText = `Rs${subTotal}`
+  document.getElementById('tax').lastElementChild.innerText = `Rs${tax}`
+  document.getElementById('total').lastElementChild.innerText = `Rs${total}`
 
 }
+
+let btnsArr = ['All','Breakfast','Lunch','Shakes']
+let btns = btnsArr.map((btn)=>{
+    if(btn == 'All'){
+    return `<button onclick="allItems()">${btn}</button>`
+    }
+    else{
+        return `<button onclick="menuSelection('${btn}')">${btn}</button>`
+    }
+})
+
+document.querySelector('.btns').innerHTML = btns.join('')
+
 let menu = [
     {
         img: './assets/biryani.png',
@@ -77,7 +93,7 @@ let menu = [
         price : '250Rs',
         description : 'Aromatic basmati rice layered with tender chicken, slow-cooked in rich spices and saffron. Every bite bursts with flavor, warmth, and a touch of tradition.',
         category: 'lunch',
-        category: 'dinner'
+        
     },
     {
         img: './assets/puloa.png',
@@ -85,7 +101,7 @@ let menu = [
         price : '250Rs',
         description : 'Long-grain rice simmered in a rich chicken broth with a delicate blend of spices, giving it a soothing aroma and a royal, melt-in-mouth taste.',
         category: 'lunch',
-        category: 'dinner'
+        
     },
     {
         img: './assets/mandhi.avif',
@@ -93,7 +109,7 @@ let menu = [
         price : '600Rs',
         description : 'Juicy, spiced chicken layered on golden basmati rice infused with saffron and traditional Arabian flavors — a rich and authentic Mandi experience you’ll crave again and again..',
         category: 'lunch',
-        category: 'dinner'
+        
     },
     {
         img: './assets/korma.png',
@@ -101,7 +117,7 @@ let menu = [
         price : '300Rs',
         description : 'Tender chicken cooked in a creamy, spiced yogurt gravy with a hint of nuts and aromatic herbs. A perfect blend of richness and tradition in every bite.',
         category: 'lunch',
-        category: 'dinner'
+        
     },
     {
         img: './assets/karahi.png',
@@ -109,7 +125,7 @@ let menu = [
         price : '450Rs',
         description : 'Spicy, smoky, and full of flavor — our Chicken Karahi hits that perfect balance between heat and taste',
         category: 'lunch',
-        category: 'dinner'
+        
     },
     {
         img: './assets/Naan.png',
@@ -117,7 +133,7 @@ let menu = [
         price : '80Rs',
         description : 'Soft, fluffy naan brushed with butter and sprinkled with freshly chopped garlic — baked to perfection for that irresistible aroma and flavor.',
         category: 'lunch',
-        category: 'dinner'
+        
     },
     {
         img: './assets/halwapuri.png',
@@ -149,10 +165,7 @@ let menu = [
     }
 ]
 
-function menu(category){
-    let items = menu.filter(function(category){
-    return menu.category.toLowerCase() == category.toLowerCase()
-}).map(function(menu){
+let menuFunc = function(menu){
 let menuHTML = `<div class="foodItem">
           <div class="img">
                   <img src="${menu.img}" alt="">
@@ -172,8 +185,19 @@ let menuHTML = `<div class="foodItem">
 
             </div>`
             return menuHTML
-})
-document.querySelector('#foodItems').innerHTML = items.join('')
-
-
 }
+
+allItems()
+
+function allItems(){
+    let items = menu.map(menuFunc)
+document.querySelector('#foodItems').innerHTML = items.join('')
+}
+
+function menuSelection(category){
+    let items = menu.filter(function(menu){
+        return menu.category.toLowerCase() == category.toLowerCase()
+    }).map(menuFunc)
+    document.querySelector('#foodItems').innerHTML = items.join('')
+}
+
