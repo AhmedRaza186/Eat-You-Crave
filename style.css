@@ -1,24 +1,17 @@
 :root {
     --accent: #eeab19;
-    /* golden mustard – matches button & price color */
     --bg: #f4f8fc;
-    /* soft blue-white background */
     --muted: #5a6a7a;
-    /* subtle gray-blue for secondary text */
     --card: #ffffff;
-    /* clean white cards */
     --text: #1a2a44;
-    /* deep navy blue – perfect for headings */
     --shadow: 0 6px 18px rgba(26, 42, 68, 0.08);
-    /* soft blue-gray shadow */
-    font-family: 'Inter', system-ui, sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: system-ui, sans-serif;
+    font-family: 'Inter', system-ui, sans-serif;
 }
 
 button {
@@ -338,17 +331,7 @@ h1 hr{
     color: var(--muted);
     transform: scale(1.1);
 }
-#overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backdrop-filter: blur(2px);
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 998;
-    display: none;
-}
+
 #foodItems{
     margin-top: 50px;
     width: 70%;
@@ -357,7 +340,11 @@ h1 hr{
     justify-content: space-between;
     flex-wrap: wrap;
     
-
+}
+#foodItems>p{
+    margin: auto auto;
+    font-size: 2rem;
+    color: var(--muted);
 }
 .foodItem{
     width: 40%;
@@ -367,6 +354,10 @@ h1 hr{
     gap: 25px;
     align-items: center;
     margin-bottom: 50px;
+}
+.foodItem:hover{
+    transition: transform .5s ease-in-out;
+    transform: scale(1.1);
 }
 .img{
     width: 40%;
@@ -410,7 +401,64 @@ h1 hr{
 .addToCart button:hover{
     background: #cab811;
 }
+.searchFilter{
+    width: 35%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
 
+}
+.search{
+    width: 70%;
+    display: flex;
+    gap: 5px;
+}
+.search input{
+    width: 70%;
+    padding: 3px 10px;
+    background: transparent;
+    border:2px solid var(--muted);
+}
+.search input:focus{
+    outline: none;
+
+}
+.search button{
+    padding: 3px 5px;
+    background: transparent;
+    border:2px solid var(--muted);
+    color: var(--muted);
+}
+.search button:hover{
+    color: var(--bg);
+    background:var(--muted) ;
+    border:2px solid var(--muted);
+    
+}
+.filter{
+width: 30%;
+}
+
+.filter select,option{
+    width: 70%;
+    background: transparent;
+    color: var(--text);
+   border:2px solid var(--muted);
+}
+
+
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(2px);
+    background: rgba(0, 0, 0, 0.2);
+    z-index: 998;
+    display: none;
+}
 @media (max-width: 1024px) {
     header img {
         width: 20%;

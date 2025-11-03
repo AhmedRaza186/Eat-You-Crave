@@ -16,14 +16,13 @@ let subArr = []
 
 function addToCart(btn) {
   let item = btn.closest('.foodItem')
-
   let img = item.querySelector('.img img').src
   let title = item.querySelector('.titlePrice h3').innerText
   let description = item.querySelector('.description').innerText
-  let priceText = item.querySelector('.titlePrice p').innerText
+  let price = item.querySelector('.titlePrice p').innerText
 
   let sidebarItem = document.createElement('div')
-  sidebarItem.classList.add('sidebar-item')
+  sidebarItem.setAttribute('class', 'sidebar-item')
   sidebarItem.innerHTML = `
     <img src="${img}" alt="">
     <div class="sidebar-item-txt">
@@ -31,48 +30,45 @@ function addToCart(btn) {
       <p>${description}</p>
     </div>
     <div class="sidebar-price-dlt">
-      <p>${priceText}</p>
-      <button onclick="removeFromCart(this)">Remove</button>
+      <p>${price}</p>
+      <button onclick="removeFromCart(this)">Remove From Cart</button>
     </div>
   `
   document.querySelector('.sidebar-main').appendChild(sidebarItem)
 
-  let priceNum = Number(priceText.replace('Rs', '').trim())
+  let priceNum = Number(price.replace('Rs', ''))
   subArr.push(priceNum)
 
-  let subTotal = subArr.reduce((total, curr) => total + curr, 0);
-  let tax = Math.floor(subTotal / 7);
-  let total = subTotal + tax
-
-  document.querySelector('#subtotal p:last-child').innerText = `${subTotal}Rs`
-  document.querySelector('#tax p:last-child').innerText = `${tax}Rs`
-  document.querySelector('#total p:last-child').innerText = `${total}Rs`
+  updateTotals()
 }
 
-
-function removeFromCart(btn){
+function removeFromCart(btn) {
   let item = btn.closest('.sidebar-item')
-  item.style.display = 'none'
-  let price = item.children[2].firstElementChild.innerText
+  let price = item.children[2].firstElementChild.innerText;
   let priceNum = Number(price.replace('Rs', ''))
+  item.remove()
+  let i = subArr.indexOf(priceNum)
+  if (i !== -1) {
+    subArr.splice(i, 1)
+  }
 
-  let subText = document.getElementById('subtotal').lastElementChild.innerText
-  let currentSub = Number(subText.replace('Rs', ''))
-
-  let newSub = currentSub - priceNum
-  newSub = newSub.toFixed(2)
-  
-  subTotal = Number(newSub)
-  let tax = Number( subTotal / 7)
-  let total = Number( subTotal + tax)
-  
-  tax = Math.floor(tax)
-  total = total.toFixed(2)
-  document.getElementById('subtotal').lastElementChild.innerText = `Rs${subTotal}`
-  document.getElementById('tax').lastElementChild.innerText = `Rs${tax}`
-  document.getElementById('total').lastElementChild.innerText = `Rs${total}`
-
+  updateTotals()
 }
+
+function updateTotals() {
+  let subTotal = subArr.reduce(function(a,b){
+  return  a + b
+  }, 0)
+  subTotal = Number(subTotal.toFixed(2))
+
+  let tax = Math.floor(subTotal / 7)
+  let total = Number((subTotal + tax).toFixed(2))
+
+  document.getElementById('subtotal').lastElementChild.innerText = `${subTotal}Rs`
+  document.getElementById('tax').lastElementChild.innerText = `${tax}Rs`
+  document.getElementById('total').lastElementChild.innerText = `${total}Rs`
+}
+
 
 let btnsArr = ['All','Breakfast','Lunch','Shakes']
 let btns = btnsArr.map((btn)=>{
@@ -93,6 +89,7 @@ let menu = [
         price : '250Rs',
         description : 'Aromatic basmati rice layered with tender chicken, slow-cooked in rich spices and saffron. Every bite bursts with flavor, warmth, and a touch of tradition.',
         category: 'lunch',
+        range:'150 - 299Rs'
         
     },
     {
@@ -101,6 +98,7 @@ let menu = [
         price : '250Rs',
         description : 'Long-grain rice simmered in a rich chicken broth with a delicate blend of spices, giving it a soothing aroma and a royal, melt-in-mouth taste.',
         category: 'lunch',
+        range:'150 - 299Rs'
         
     },
     {
@@ -109,6 +107,7 @@ let menu = [
         price : '600Rs',
         description : 'Juicy, spiced chicken layered on golden basmati rice infused with saffron and traditional Arabian flavors — a rich and authentic Mandi experience you’ll crave again and again..',
         category: 'lunch',
+        range: '500RS+'
         
     },
     {
@@ -117,6 +116,7 @@ let menu = [
         price : '300Rs',
         description : 'Tender chicken cooked in a creamy, spiced yogurt gravy with a hint of nuts and aromatic herbs. A perfect blend of richness and tradition in every bite.',
         category: 'lunch',
+        range:'300 - 499Rs'
         
     },
     {
@@ -125,6 +125,7 @@ let menu = [
         price : '450Rs',
         description : 'Spicy, smoky, and full of flavor — our Chicken Karahi hits that perfect balance between heat and taste',
         category: 'lunch',
+        range:'300 - 499Rs'
         
     },
     {
@@ -133,6 +134,7 @@ let menu = [
         price : '80Rs',
         description : 'Soft, fluffy naan brushed with butter and sprinkled with freshly chopped garlic — baked to perfection for that irresistible aroma and flavor.',
         category: 'lunch',
+        range:'0 - 149Rs'
         
     },
     {
@@ -140,30 +142,64 @@ let menu = [
         title : 'Halwa Puri',
         price : '180Rs',
         description : 'Golden, crispy puris served with sweet suji halwa and spicy chana curry — the perfect blend of flavors to start your morning with pure desi happiness.',
-        category:'breakfast'
+        category:'breakfast',
+        range:'150 - 299Rs'
     },
     {
         img: './assets/paratha.png',
         title : 'Paratha',
         price : '50Rs',
         description : 'Crispy, multi-layered paratha cooked with ghee until golden brown — soft inside, crunchy outside, and packed with buttery flavor.',
-        category:'breakfast'
+        category:'breakfast',
+        range:'0 - 149Rs'
     },
     {
         img: './assets/strawberryshake.png',
         title : 'Strawberry Shake',
         price : '250Rs',
         description : 'Fresh, juicy strawberries bursting with natural sweetness and vibrant flavor — a refreshing treat for any time of the day.',
-        category:'shakes'
+        category:'shakes',
+        range:'150 - 299Rs'
     },
     {
         img: './assets/mangoshake.png',
         title : 'Mango Shake',
         price : '250Rs',
         description : 'Thick, creamy mango shake made from fresh ripe mangoes and chilled milk — sweet, smooth, and straight-up refreshing with every sip!.',
-        category:'shakes'
+        category:'shakes',
+        range:'150 - 299Rs'
     }
 ]
+
+let options = ['All','0 - 149Rs','150 - 299Rs','300 - 499Rs','500RS+']
+let select = options.map(function(option){
+        if(option == 'All'){
+    return `<option value="${option}" onclick="rangeMenu('${option}')">${option}</option>`
+    }
+          return ` <option value="${option}" onclick="rangeMenu('${option}')">${option}</option>`
+        })
+        document.querySelector('select').innerHTML = select.join('')
+
+       function rangeMenu(range){
+let items = menu.filter(function(menu){
+    return menu.range.toLowerCase() == range.toLowerCase()
+}).map(menuFunc)
+document.querySelector('#foodItems').innerHTML = items.join('')
+       } 
+
+function search(){
+    let userInput = document.querySelector('.search input').value.toLowerCase().trim()
+    console.log(userInput)
+  let items = menu.filter(function(item){
+      return item.title.toLowerCase().includes(userInput)
+    }).map(menuFunc)
+    document.querySelector('#foodItems').innerHTML = items.join('')
+    if(items == ''){
+    let p = document.createElement('p')
+    document.querySelector('#foodItems').prepend(p)
+    p.innerText = "No Item Found"
+    }
+}
 
 let menuFunc = function(menu){
 let menuHTML = `<div class="foodItem">
