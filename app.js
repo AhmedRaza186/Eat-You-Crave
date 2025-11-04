@@ -176,7 +176,7 @@ let select = options.map(function(option){
         if(option == 'All'){
     return `<option value="${option}" onclick="rangeMenu('${option}')">${option}</option>`
     }
-          return ` <option value="${option}" onclick="rangeMenu('${option}')">${option}</option>`
+          return ` <option value="${option}" onclick="rangeMenu('this')">${option}</option>`
         })
         document.querySelector('select').innerHTML = select.join('')
 
@@ -189,7 +189,6 @@ document.querySelector('#foodItems').innerHTML = items.join('')
 
 function search(){
     let userInput = document.querySelector('.search input').value.toLowerCase().trim()
-    console.log(userInput)
   let items = menu.filter(function(item){
       return item.title.toLowerCase().includes(userInput)
     }).map(menuFunc)

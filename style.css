@@ -339,6 +339,7 @@ h1 hr{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+
     
 }
 #foodItems>p{
@@ -614,6 +615,11 @@ width: 30%;
     #total {
         gap: 27%;
     }
+    .searchFilter{
+        width: 55%;
+
+    }
+
 }
 
 @media (max-width: 480px) {
@@ -681,5 +687,49 @@ width: 30%;
     #tax {
         gap: 45%;
     }
+    .searchFilter{
+        width: 80%;
+        
+    }
+}
 
+
+@media (max-width: 1024px) {
+  #foodItems {
+    width: 90%;
+    justify-content: center;
+    gap: 40px;
+  }
+  .foodItem {
+    width: 45%;
+    height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  #foodItems {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+  .foodItem {
+    width: 80%;
+    margin: 0 auto;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #foodItems {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+  }
+  .foodItem {
+    width: 85%;
+    height: auto;
+    margin: 0 auto;
+  }
 }
