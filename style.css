@@ -720,16 +720,4 @@ width: 30%;
   }
 }
 
-@media (max-width: 480px) {
-  #foodItems {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    gap: 25px;
-  }
-  .foodItem {
-    width: 85%;
-    height: auto;
-    margin: 0 auto;
-  }
-}
+
