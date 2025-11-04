@@ -174,11 +174,11 @@ let menu = [
 let options = ['All','0 - 149Rs','150 - 299Rs','300 - 499Rs','500RS+']
 let select = options.map(function(option){
         if(option == 'All'){
-    return `<option value="${option}" onclick="rangeMenu('${option}')">${option}</option>`
+    return `<button onclick='allItems()'>${option}</button>`
     }
-          return ` <option value="${option}" onclick="rangeMenu('this')">${option}</option>`
+          return ` <button onclick="rangeMenu('${option}')">${option}</button>`
         })
-        document.querySelector('select').innerHTML = select.join('')
+        document.querySelector('.select-btns').innerHTML = select.join('')
 
        function rangeMenu(range){
 let items = menu.filter(function(menu){
@@ -186,6 +186,16 @@ let items = menu.filter(function(menu){
 }).map(menuFunc)
 document.querySelector('#foodItems').innerHTML = items.join('')
        } 
+       
+       function openOptions(){
+ document.querySelector('.select-btns').style.display = 'flex'
+   document.querySelector('.select p').setAttribute('onclick','closeOptions()')
+       }
+       function closeOptions(){
+ document.querySelector('.select-btns').style.display = 'none'
+   document.querySelector('.select p').setAttribute('onclick','openOptions()')
+       }
+
 
 function search(){
     let userInput = document.querySelector('.search input').value.toLowerCase().trim()

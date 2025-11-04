@@ -413,6 +413,7 @@ h1 hr{
     width: 70%;
     display: flex;
     gap: 5px;
+    height: 30px;
 }
 .search input{
     width: 70%;
@@ -436,15 +437,44 @@ h1 hr{
     border:2px solid var(--muted);
     
 }
-.filter{
-width: 30%;
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  position: relative;
+  cursor: pointer;
 }
+.select p{
+    border: 2px solid var(--accent);
+    padding: 5px 8px;
+    border-radius: 8px;
 
-.filter select,option{
-    width: 70%;
-    background: transparent;
-    color: var(--text);
-   border:2px solid var(--muted);
+    
+}
+.select-btns{
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.select-btns button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    background: var(--accent);
+    color: white;
+    transition: 0.3s;
+
+
+}
+.select-btns button:hover {
+  transform: scale(1.05);
+  background: var(--accent-dark);
 }
 
 
