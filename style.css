@@ -365,7 +365,7 @@ h1 hr {
 
 .foodItem:hover {
     transition: transform .5s ease-in-out;
-    transform: scale(1.1);
+    transform:translateY(-25px) scale(1.05);
 }
 
 .img {

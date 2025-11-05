@@ -79,7 +79,7 @@ let btns = btnsArr.map((btn) => {
     return `<button onclick="menuSelection('${btn}')">${btn}</button>`
   }
 })
-document.querySelector('.select-btns').innerHTML = btns.join('')
+document.querySelector('.btns').innerHTML = btns.join('')
 
 
 let menu = [
