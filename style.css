@@ -557,6 +557,10 @@ footer {
     height: 50%;
     object-fit: cover;
 }
+.logo-side p{
+    position: relative;
+    bottom: 30px;
+}
 .links-side {
        display: flex;
     justify-content: center;
@@ -819,7 +823,7 @@ transition: transform 0.5s ;
   }
 
   .logo-side img {
-    width: 200px;
+    width: 70%;
   }
 
   ul h4 {
