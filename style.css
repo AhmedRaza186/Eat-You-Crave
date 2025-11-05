@@ -20,7 +20,7 @@ button {
 
 body {
     width: 100%;
-    height: 100vh;
+    height: auto;
     background: var(--bg);
     color: var(--text);
     overflow-x: hidden;
@@ -295,7 +295,7 @@ header .cart {
 }
 
 .order-btn button:hover {
-background: #cab811;
+    background: #cab811;
 }
 
 main {
@@ -305,34 +305,39 @@ main {
     flex-direction: column;
     align-items: center;
 }
-main h1{
+
+main h1 {
     display: flex;
     flex-direction: column;
     margin-top: 25px;
     align-items: center;
 }
-h1 hr{
-    width: 40% ;
+
+h1 hr {
+    width: 40%;
     height: 3px;
     background-color: var(--accent);
 }
-.btns{
+
+.btns {
     margin-top: 25px;
     display: flex;
     gap: 30px;
 }
-.btns button{
+
+.btns button {
     width: auto;
     background: transparent;
     border: none;
     font-size: 1.1rem;
 }
-.btns button:hover{
+
+.btns button:hover {
     color: var(--muted);
     transform: scale(1.1);
 }
 
-#foodItems{
+#foodItems {
     margin-top: 50px;
     width: 70%;
     height: 100%;
@@ -340,14 +345,15 @@ h1 hr{
     justify-content: space-between;
     flex-wrap: wrap;
 
-    
 }
-#foodItems>p{
+
+#foodItems>p {
     margin: auto auto;
     font-size: 2rem;
     color: var(--muted);
 }
-.foodItem{
+
+.foodItem {
     width: 40%;
     height: 400px;
     display: flex;
@@ -356,128 +362,146 @@ h1 hr{
     align-items: center;
     margin-bottom: 50px;
 }
-.foodItem:hover{
+
+.foodItem:hover {
     transition: transform .5s ease-in-out;
     transform: scale(1.1);
 }
-.img{
+
+.img {
     width: 40%;
     height: 100%;
     border: 2px solid var(--accent);
 }
-.img img{
+
+.img img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    
+
 }
-.details{
+
+.details {
     width: 60%;
     height: 100%;
 }
-.titlePrice{
+
+.titlePrice {
     display: flex;
     justify-content: space-between;
     border-bottom: 2px solid var(--accent);
     padding-bottom: 3px;
 }
-.titlePrice p{
+
+.titlePrice p {
     color: #ff8800;
 }
-.description{
+
+.description {
     margin-top: 5px;
 }
-.addToCart{
-    margin-top: 5px;
+
+.addToCart {
+    margin-top: 25px;
     display: flex;
     justify-content: center;
 }
-.addToCart button{
+
+.addToCart button {
     background: var(--accent);
     color: var(--card);
     border: none;
     padding: 8px 12px;
     border-radius: 30px;
 }
-.addToCart button:hover{
+
+.addToCart button:hover {
     background: #cab811;
 }
-.searchFilter{
+
+.searchFilter {
     width: 35%;
     margin-top: 30px;
     display: flex;
     justify-content: center;
 
 }
-.search{
+
+.search {
     width: 70%;
     display: flex;
     gap: 5px;
     height: 30px;
 }
-.search input{
+
+.search input {
     width: 70%;
     padding: 3px 10px;
     background: transparent;
-    border:2px solid var(--muted);
+    border: 2px solid var(--muted);
 }
-.search input:focus{
+
+.search input:focus {
     outline: none;
 
 }
-.search button{
+
+.search button {
     padding: 3px 5px;
     background: transparent;
-    border:2px solid var(--muted);
+    border: 2px solid var(--muted);
     color: var(--muted);
 }
-.search button:hover{
+
+.search button:hover {
     color: var(--bg);
-    background:var(--muted) ;
-    border:2px solid var(--muted);
-    
+    background: var(--muted);
+    border: 2px solid var(--muted);
+
 }
+
 .select {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  position: relative;
-  cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    /* flex-wrap: wrap; */
+    position: relative;
+    cursor: pointer;
 }
-.select p{
+
+.select p {
     border: 2px solid var(--accent);
     padding: 5px 8px;
     border-radius: 8px;
 
-    
 }
-.select-btns{
+
+.select-btns {
     display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
+
 }
+
 .select-btns button {
-    padding: 8px 15px;
-    border: none;
+    border: 2px solid var(--accent);
+    padding: 5px 8px;
     border-radius: 8px;
     cursor: pointer;
-    background: var(--accent);
-    color: white;
+    color: rgb(0, 0, 0);
     transition: 0.3s;
-
+    background: transparent;
 
 }
+
 .select-btns button:hover {
-  transform: scale(1.05);
-  background: var(--accent-dark);
+    transform: scale(1.05);
+
 }
-
-
 
 #overlay {
     position: fixed;
@@ -490,6 +514,101 @@ h1 hr{
     z-index: 998;
     display: none;
 }
+
+footer {
+  position: relative;
+  bottom: 0;
+  margin-top: 7%;
+  background: var(--accent);
+  width: 100%;
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px -5px 15px 2px var(--accent);
+  color: var(--text);
+
+}
+
+
+.footer-container {
+    /* background: #000; */
+  width: 85%;
+  height: auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 40px 0;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.logo-side {
+    /* background: white; */
+    width: 30%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.logo-side img{
+    width: 60%;
+    height: 50%;
+    object-fit: cover;
+}
+.links-side {
+       display: flex;
+    justify-content: center;
+    /* background: white; */
+    width: 30%;
+    height: 70%;
+}
+ ul{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 15px;
+    list-style-type: none;
+    color: var(--text);
+    font-size: 1.2rem;
+}
+ ul li a{
+    text-decoration: none;
+    color: var(--text);
+    opacity: 0.8;
+    
+}
+ ul li:hover{
+    color: var(--text);
+text-decoration: underline;
+transform: scale(1.08);
+transform: translateX(4px);
+transition: transform 0.5s ;
+    opacity: 1;
+}
+
+.support-side {
+           display: flex;
+    justify-content: center;
+    /* background: white; */
+    width: 30%;
+    height: 70%;
+}
+.footer-bottom {
+  text-align: center;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.footer-bottom span {
+  color: black;
+  font-weight: bold;
+}
+
 @media (max-width: 1024px) {
     header img {
         width: 20%;
@@ -546,6 +665,21 @@ h1 hr{
     #tax {
         gap: 36%;
     }
+
+    #foodItems {
+        width: 90%;
+        justify-content: center;
+        gap: 40px;
+    }
+
+    .foodItem {
+        width: 45%;
+        height: auto;
+    }
+      .footer-container {
+    justify-content: center;
+    gap: 40px;
+  }
 }
 
 
@@ -571,10 +705,7 @@ h1 hr{
         width: 300px;
     }
 
-
     .sidebar-header {
-        /* flex-direction: column; */
-        /* align-items: flex-start; */
         margin-left: 20px;
         margin-top: 20px;
         gap: 40px;
@@ -645,11 +776,63 @@ h1 hr{
     #total {
         gap: 27%;
     }
-    .searchFilter{
+
+    #foodItems {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .foodItem {
+        width: 80%;
+        margin: 0 auto;
+        height: auto;
+    }
+
+    .searchFilter {
         width: 55%;
 
     }
 
+    .select p,
+    button {
+        font-size: .8rem;
+    }
+
+  footer {
+    min-height: auto;
+
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo-side,
+  .links-side,
+  .support-side {
+    width: 90%;
+    align-items: center;
+  }
+
+  .logo-side img {
+    width: 200px;
+  }
+
+  ul h4 {
+    font-size: 1.1rem;
+  }
+
+  ul li {
+    font-size: 1rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.85rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -717,37 +900,24 @@ h1 hr{
     #tax {
         gap: 45%;
     }
-    .searchFilter{
+
+    .searchFilter {
         width: 80%;
-        
+
     }
-}
-
-
-@media (max-width: 1024px) {
-  #foodItems {
-    width: 90%;
-    justify-content: center;
-    gap: 40px;
+  footer {
+    margin-top: 15%;
   }
-  .foodItem {
-    width: 45%;
-    height: auto;
-  }
-}
 
-@media (max-width: 768px) {
-  #foodItems {
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
+  .logo-side p {
+    font-size: 0.85rem;
   }
-  .foodItem {
-    width: 80%;
-    margin: 0 auto;
-    height: auto;
+
+  ul h4 {
+    font-size: 1rem;
+  }
+
+  ul li a {
+    font-size: 0.9rem;
   }
 }
-
-
